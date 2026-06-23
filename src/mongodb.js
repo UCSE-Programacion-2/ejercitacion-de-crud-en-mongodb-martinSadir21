@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
-const dns = require('dns');
 
 // Para versiones de Node 24.14.0 o superior
+const dns = require('dns');
 dns.setServers(['8.8.8.8']);
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017';
@@ -16,7 +16,9 @@ const client = new MongoClient(MONGO_URI);
  */
 async function connectDB() {
     try {
-        // Tu código aquí
+        // Conectamos el cliente al servidor
+        await client.connect();
+        console.log("¡Conectado exitosamente a MongoDB Atlas!");
         
     } catch (error) {
         console.error("Error al conectar a MongoDB:", error);
